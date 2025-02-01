@@ -1,9 +1,8 @@
-Template for the Read the Docs tutorial
-=======================================
+The PeARS documentation files
+=============================
 
-This GitHub template includes fictional Python library
-with some basic Sphinx docs.
+This repository contains the PeARS documentation files, to be hosted on readthedocs.
 
-Read the tutorial here:
+Find out more about the project here:
 
-https://docs.readthedocs.io/en/stable/tutorial/
+https://pearsproject.org/
