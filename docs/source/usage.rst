@@ -142,44 +142,46 @@ The following instructions are for Ubuntu. For other distributions, refer to the
     export DOMAIN=pears-pod-url.com # Provide the URL on which you want to reach your pears-federated pod
     export PEARS_DIR=~/pears-pod-name-1 # replace `pears-pod-name-1` with the name of your pod for ease of identification
     export STAGE=production # replace this with `staging` if you are just testing the setup, otherwise it will create a TLS certificate for you
-    ```
 
-* Download the Docker-compose file and setup base directory for your instance
+Download the Docker-compose file and setup base directory for your instance
+============================================================================
 
-    1. Download the `docker-compose.yml` from the Github repository to the base of your server:
+* Download the `docker-compose.yml` from the Github repository to the base of your server:
         
-        .. code-block:: bash
+.. code-block:: bash
 
-                wget https://raw.githubusercontent.com/PeARSearch/PeARS-federated/nvn/add-deploy-files/deployment/docker-compose.yaml -O template.yaml
+    wget https://raw.githubusercontent.com/PeARSearch/PeARS-federated/nvn/add-deploy-files/deployment/docker-compose.yaml -O template.yaml
     
-     2. Use the above variables in the docker-compose file
+* Use the above variables in the docker-compose file
      
-        .. code-block:: bash
+.. code-block:: bash
 
-               envsubst < template.yaml > docker-compose.yaml
-               rm -rf template.yaml
+    envsubst < template.yaml > docker-compose.yaml
+    rm -rf template.yaml
     
-     3. Create a directory to store your instance details and to store persistent data for the instance:
+* Create a directory to store your instance details and to store persistent data for the instance:
         
-        .. code-block:: bash
+.. code-block:: bash
 
-                mkdir -p ${PEARS_DIR}/data
+    mkdir -p ${PEARS_DIR}/data
 
-* Configure the environmental details for your instance
+Configure the environmental details for your instance
+=====================================================
 
-    1. Download the `env-template` files from the GitHub repository:
+*  Download the `env-template` files from the GitHub repository:
 
-        .. code-block:: bash
+.. code-block:: bash
 
-                wget https://raw.githubusercontent.com/PeARSearch/PeARS-federated/nvn/add-deploy-files/deployment/.env-template -O ${PEARS_DIR}/.env
+    wget https://raw.githubusercontent.com/PeARSearch/PeARS-federated/nvn/add-deploy-files/deployment/.env-template -O ${PEARS_DIR}/.env
     
-    2. Update the values in the `.env` file to match your configuration (follow the instructions in the .env file to fill in the data):
+* Update the values in the `.env` file to match your configuration (follow the instructions in the .env file to fill in the data):
 
-        .. code-block:: bash
+.. code-block:: bash
 
-                vim ${PEARS_DIR}/.env
+    vim ${PEARS_DIR}/.env
 
-* Bring Up the Docker Compose
+Bring Up the Docker Compose
+===========================
 
 .. note:: Note.
 
@@ -189,9 +191,10 @@ The following instructions are for Ubuntu. For other distributions, refer to the
 
         docker compose up -d
 
-* Point your DNS to the IP address of the server
+Point your DNS to the IP address of the server
+==============================================
 
-    Make sure you create an A name record pointing from your PeARS URL to the public IP address of the server
+Make sure you create an A name record pointing from your PeARS URL to the public IP address of the server
 
 
 
