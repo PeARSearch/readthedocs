@@ -146,20 +146,20 @@ The following instructions are for Ubuntu. For other distributions, refer to the
 Download the Docker-compose file and setup base directory for your instance
 ============================================================================
 
-* Download the `docker-compose.yml` from the Github repository to the base of your server:
+Download the `docker-compose.yml` from the Github repository to the base of your server:
         
 .. code-block:: bash
 
     wget https://raw.githubusercontent.com/PeARSearch/PeARS-federated/nvn/add-deploy-files/deployment/docker-compose.yaml -O template.yaml
     
-* Use the above variables in the docker-compose file
+Use the above variables in the docker-compose file
      
 .. code-block:: bash
 
     envsubst < template.yaml > docker-compose.yaml
     rm -rf template.yaml
     
-* Create a directory to store your instance details and to store persistent data for the instance:
+Create a directory to store your instance details and to store persistent data for the instance:
         
 .. code-block:: bash
 
@@ -168,22 +168,23 @@ Download the Docker-compose file and setup base directory for your instance
 Configure the environmental details for your instance
 =====================================================
 
-*  Download the `env-template` files from the GitHub repository:
+Download the `env-template` files from the GitHub repository:
 
 .. code-block:: bash
 
     wget https://raw.githubusercontent.com/PeARSearch/PeARS-federated/nvn/add-deploy-files/deployment/.env-template -O ${PEARS_DIR}/.env
     
-* Update the values in the `.env` file to match your configuration (follow the instructions in the .env file to fill in the data):
+Update the values in the `.env` file to match your configuration (follow the instructions in the .env file to fill in the data):
 
 .. code-block:: bash
 
     vim ${PEARS_DIR}/.env
 
+
 Bring Up the Docker Compose
 ===========================
 
-.. note:: Note.
+.. note::
 
     This command assumes that you are running this command from the directory in which the `docker-compose.yaml` file exists
 
@@ -204,11 +205,11 @@ Make sure you create an A name record pointing from your PeARS URL to the public
 
 If you want to host several PeARS instances on the same server, we will have to re-use the same docker-compose file by adding new pod configurations and re-using the `https-portal` container that you will find in the `docker-compose` file to point to different instances for different domain names. Here are the step by step details for doing that:
 
-.. note:: Note.
+.. note::
 
     We assume you have already followed the above steps and have a single pod running already at this point
 
-* Create a new directory for the new pod and download the environment variable file
+Create a new directory for the new pod and download the environment variable file
 
 .. code-block:: bash
 
@@ -216,16 +217,14 @@ If you want to host several PeARS instances on the same server, we will have to 
     mkdir -p ${PEARS_DIR_2}/data
     # You can also copy this file from your existing pod directory for ease of editing
     wget https://raw.githubusercontent.com/PeARSearch/PeARS-federated/nvn/add-deploy-files/deployment/.env-template -O ${PEARS_DIR_2}/.env
-    ```
-* Change the environment details in the `.env` file:
+    
+Change the environment details in the `.env` file:
 
 .. code-block:: bash
 
     vim ${PEARS_DIR_2}/.env
 
-    * Update the docker-compose to also bring up the second pod
-
-   If you open your `docker-compose.yaml` file in the server at this point, you will find something like this:
+Update the docker-compose to also bring up the second instance. If you open your `docker-compose.yaml` file in the server at this point, you will find something like this:
 
 .. code-block:: bash
    
