@@ -6,7 +6,7 @@ Installation
 
 *PeARS Federated* is provided as-is. Before you use it, please check the rules of your country on crawling Web content and displaying snippets. And be a good netizen: do not overload people's servers while indexing!
 
-PeARS can be installed locally from :ref:`source <localinstall_>` for development, testing, or even to manage one's own personal search service. For public use (i.e. to share your search service with the world), we recommend the :ref:`docker install <dockerinstall_>`. For those who would like to share their search index but are not fully comfortable with running their own server, we also have bespoke installation instructions for the PythonAnywhere cloud service, which provides an easy-to-user, visual interface to set up one's own Web app.
+PeARS can be installed locally from :ref:`source <localinstall>` for development, testing, or even to manage one's own personal search service. For public use (i.e. to share your search service with the world), we recommend the :ref:`docker install <dockerinstall>`. For those who would like to share their search index but are not fully comfortable with running their own server, we also have bespoke installation instructions for the PythonAnywhere cloud service, which provides an easy-to-user, visual interface to set up one's own Web app.
 
 .. _localinstall:
 
