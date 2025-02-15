@@ -1,30 +1,30 @@
 ==============
-Important info
+Installation
 ==============
 
 *PeARS Federated* is a version of PeARS for federated use. Admins create PeARS instances that users can join to contribute to the index.
 
 *PeARS Federated* is provided as-is. Before you use it, please check the rules of your country on crawling Web content and displaying snippets. And be a good netizen: do not overload people's servers while indexing!
 
-PeARS can be installed locally from source for development, testing, or even to manage one's own personal search service. For public use (i.e. to share your search service with the world), we recommend the docker install. For those who would like to share their search index but are not fully comfortable with running their own server, we also have bespoke installation instructions for the PythonAnywhere cloud service, which provides an easy-to-user, visual interface to set up one's own Web app.
+PeARS can be installed locally from :ref:`source <localinstall>_` for development, testing, or even to manage one's own personal search service. For public use (i.e. to share your search service with the world), we recommend the :ref:`docker install <dockerinstall>_`. For those who would like to share their search index but are not fully comfortable with running their own server, we also have bespoke installation instructions for the PythonAnywhere cloud service, which provides an easy-to-user, visual interface to set up one's own Web app.
 
 .. _localinstall:
 
-===================
+-------------------
 Install from source
-===================
+-------------------
 
 The following is meant to help you test PeARS on localhost, on your machine. At the point where you are ready to deploy, please check our wiki for more instructions.
 
-----------------------------------
+
 1. Clone this repo on your machine
-----------------------------------
+==================================
 
 >>> git clone https://github.com/PeARSearch/PeARS-federated.git
 
--------------------------------------------------------
+
 2. (Optional step) Setup a virtualenv in your directory
--------------------------------------------------------
+=======================================================
 
 If you haven't yet set up virtualenv on your machine, please install it via pip:
 
@@ -41,17 +41,17 @@ Then run:
 
 >>> virtualenv env && source env/bin/activate
 
----------------------------------
+
 3. Install the build dependencies
----------------------------------
+=================================
 
 From the PeARS-federated directory, run:
 
 >>> pip install -r requirements.txt
 
---------------------------------------------
+
 4. (Optional step) Install further languages
---------------------------------------------
+============================================
 
 If you want to search and index in several languages at the same time, you can add multilingual support to your English install. To do this:
 
@@ -59,15 +59,15 @@ If you want to search and index in several languages at the same time, you can a
 
 where you should replace lc with a language code of your choice. For now, we are only supporting English (en), German (de), French (fr) and Malayalam (ml) but more languages are coming!
 
--------------------
+
 5. Set up your .env
--------------------
+===================
 
 There is a .env template file at *.env-template* in the root directory of the repository. You should copy it to *.env* and fill in the information for your setup.
 
------------------
+
 6. Run your pear!
------------------
+=================
 
 While on your local machine, in the root of the repo, run:
 
@@ -80,33 +80,15 @@ Now, go to your browser at *localhost:8080*. You should see the search page for 
 
 .. _dockerinstall:
 
-===================
+-------------------
 Install from docker
-===================
+-------------------
 
-------------------
-1. Create a server
-------------------
+These instructions assume that you are running your own server.
 
-To deploy PeARS-federated, you need to start by creating a server. Below are instructions for creating a server on Hetzner and Scaleway.
 
-Hetzner
-=======
-
-* Visit `Hetzner <https://www.hetzner.com/cloud>`_.
-* Create an account and log in.
-* Follow the `Hetzner Cloud Quickstart Guide <https://docs.hetzner.com/cloud/getting-started/quickstart/>`_ to create a new server.
-
-Scaleway
-========
-
-* Visit `Scaleway <https://www.scaleway.com/>`_.
-* Create an account and log in.
-* Follow the `Scaleway Getting Started Guide <https://www.scaleway.com/en/docs/compute/instances/quickstart/>`_ to create a new server.
-
------------------------------------
-2. Deploy Docker and Docker Compose
------------------------------------
+1. Deploy Docker and Docker Compose
+===================================
 
 The following instructions are for Ubuntu. For other distributions, refer to the `official Docker documentation <https://docs.docker.com/engine/install/>`_.
 
@@ -130,9 +112,9 @@ The following instructions are for Ubuntu. For other distributions, refer to the
     sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 
--------------------------
-3. Deploy PeARS-federated
--------------------------
+
+2. Deploy PeARS-federated
+=========================
 
 * SSH into your server
 * Set the domain name and instance specific directory name
@@ -195,9 +177,8 @@ The following instructions are for Ubuntu. For other distributions, refer to the
 
 
 
--------------------------------------------------
-4. (Optional) Adding more pods to the same server
--------------------------------------------------
+3. (Optional) Adding more pods to the same server
+=================================================
 
 If you want to host several PeARS instances on the same server, we will have to re-use the same docker-compose file by adding new pod configurations and re-using the `https-portal` container that you will find in the `docker-compose` file to point to different instances for different domain names. Here are the step by step details for doing that:
 
@@ -220,14 +201,12 @@ If you want to host several PeARS instances on the same server, we will have to 
 
     vim ${PEARS_DIR_2}/.env
 
-    * Update the docker-compose to also bring up the second pod
+* Update the docker-compose to also bring up the second pod
 
-   If you open your `docker-compose.yaml` file in the server at this point, you will find something like this:
+If you open your `docker-compose.yaml` file in the server at this point, you will find something like this:
 
 .. code-block:: bash
    
-    cat docker-compose.yaml
-
     version: '3.8'
 
     services:
@@ -255,8 +234,6 @@ If you want to host several PeARS instances on the same server, we will have to 
 
 .. code-block:: bash
 
-    vim docker-compose.yaml
-
     version: '3.8'
 
     services:
@@ -279,8 +256,6 @@ If you want to host several PeARS instances on the same server, we will have to 
 * Update `https-portal` pod to point to the new pod as well
 
   .. code-block:: bash
-
-    vim docker-compose.yaml
 
     version: '3.8'
 
@@ -318,18 +293,21 @@ If you want to host several PeARS instances on the same server, we will have to 
 
 * Bring Up the Docker Compose
 
-    .. note:: Note.
+.. note:: Note.
     
-        This command assumes that you are running this command from the directory in which the `docker-compose.yaml` file exists
+This command assumes that you are running this command from the directory in which the `docker-compose.yaml` file exists
 
-    1. Start the Docker Compose services:
-        ```bash
-        docker compose up -d
-        ```
-    2. Check the new pod is running by running the command:
-        ```bash
-        docker ps
-        ```
+* Start the Docker Compose services:
+
+.. code-block:: bash
+
+    docker compose up -d
+
+ * Check the new pod is running by running the command:
+  
+.. code-block:: bash
+
+    docker ps
 
 * Point your DNS to the IP address of the server
 
@@ -337,22 +315,22 @@ Make sure you create an A name record pointing from your new PeARS URL to the pu
 
 If you want to add a third instance, you can follow the same steps as above but for a third entry.
 
--------------
-5. Management
--------------
 
-Backing Up Data
-===============
+4. Management
+=============
+
+Backing Up data
+---------------
 
 To avoid loss of data, regularly back up the `data` folder:
 
-1. Create a backup directory:
+* Create a backup directory:
     
 .. code-block:: bash
 
     mkdir -p ~/pears-federated-backups
 
-2. Copy the data directory to the backup directory:
+* Copy the data directory to the backup directory:
     
 .. code-block:: bash
 

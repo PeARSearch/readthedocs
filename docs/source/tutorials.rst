@@ -1,10 +1,6 @@
-Tutorial
-========
-
-.. _wikitutorial:
-
-Index some Wikipedia pages on your PeARS instance
-=================================================
+=================================
+Tutorial 1: index Wikipedia pages
+=================================
 
 The best way to familiarise oneself with PeARS is by playing with some nice open data. So we have written a little tutorial on how to set up a PeARS instance with selected Wikipedia material. At the end of this tutorial, you will have a PeARS installation running locally on your computer, and will be able to search the Wikipedia categories that you indexed.
 
@@ -12,10 +8,12 @@ The instructions use `WikiNLP <https://github.com/possible-worlds-research/wikin
 
 We will assume a  local PeARS install for this tutorial. Refer to the documentation if you want to install PeARS on a publicly available server.
 
+----------------------------------
 Step 1 - create a Wikipedia corpus
 ----------------------------------
 
-**1. Install WikiNLP**
+Install WikiNLP
+===============
 
 The installation instructions for WikiNLP can be found `on GitHub <https://github.com/possible-worlds-research/wikinlp>`_. We replicate them here below for convenience.
 
@@ -40,7 +38,8 @@ Then, create a directory for WikiNLP, make your virtual environment and install 
 You're done!
 
 
-**2. Download the Wikipedia categories**
+Download the Wikipedia categories
+=================================
 
 Let's now assume that you are a book lover with an affinity for science fiction. Further, let's imagine that you would like to search for novels with particular plot elements, irrespective of author, publication history or book reception. In other words, you would like to extract the synopses only from the original pages, and search over those.
 
@@ -70,7 +69,7 @@ Running the above with *python extract_scifi.py* results in a file called *data/
 
 Run your python script again. It may take a while until all documents are downloaded.
 
-
+------------------------------------------------------------------
 Step 2 - Update your PeARS .env to fit the topic of your instance
 ------------------------------------------------------------------
 
@@ -100,7 +99,8 @@ Finally, let's make sure we can run PeARS:
 
 Head over to *http://localhost:8080* in your browser (replace 8080 with your chosen port if you amended the default value). You should see PeARS running
 
-                                                                   
+                                                                  
+-----------------------------------------------------------
 Step 3 - populate your PeARS instance with your Wiki corpus
 -----------------------------------------------------------
 
@@ -115,6 +115,7 @@ There is only one little detail to bear in mind. The filter should be a string w
 Go and have a cup of tea, and don't interrupt processing, it may take a little while.
 
 
+--------------
 Step 4 - Play!
 --------------
 
