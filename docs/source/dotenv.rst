@@ -19,9 +19,13 @@ Mail Settings
 If you are using your PeARS instance locally, you may leave these variables empty. But if you are running a public instance, you will want ways to email new users, help them perform basic actions like resetting passwords, and perhaps also send yourself important information about your instance (like new sign-ups). To do this, you need to associate a mail account with your instance. That account should support SMTP. Most of the information below will have been provided by your mail provider.
 
 **MAIL_DEFAULT_SENDER** is your email address.
+
 **EMAIL_USER** is probably the same email address as previously, unless you have a specific username that you use for your mail server.
+
 **MAIL_SERVER** your mail server.
+
 **MAIL_PORT** the port of your SMTP mail server.
+
 **EMAIL_PASSWORD** the password associated with your mail account.
 
 -------
@@ -31,7 +35,9 @@ Secrets
 The following variables are used for security purposes. You should set them all to some long random string of your choice.
 
 **SECRET_KEY** is some long string.
+
 **SECURITY_PASSWORD_SALT** is some other long string.
+
 **CSRF_SESSION_KEY** is yet another long string.
 
 ---------------
@@ -41,6 +47,7 @@ Docker settings
 You only need to set these variables if you are using a Docker installation.
 
 **PODS_DIR** is the full path to your pod directory in the *data* folder.
+
 **CAPTCHA_DIR** is the full path to your captcha directory in the *data* folder.
 
 -----------------------
@@ -56,6 +63,7 @@ Server
 ------
 
 **APP_PORT** is the port you want to use to run your PeARS instance. It is set at 8080 by default.
+
 **FLASK_ENV** should be set to "production" when running the app in production, otherwise to "development".
 
 ---------------------
@@ -65,6 +73,7 @@ User-related settings
 These settings control what your visitors can do with your site.
 
 **NEW_USERS_ALLOWED** allows users to create accounts on your instance when set to 'true'. When 'false', the sign-up button is deactivated.
+
 **FEEDBACK_FORM** allows you to display a link to a feedback form on your instance. It is set to 'false' by default.
 
 -----------------------
@@ -109,11 +118,19 @@ Legal
 The following variables are there in case you have to satisfy any legal requirements in terms of showing the owner of your instance. They should all be fairly explanatory and will be used to populate the T&C, Impressum and Privacy policy pages of the site. 
 
 **ORG_NAME** is your organisation's name.
+
 **ORG_ADDRESS** is your organisation's address, on one line.
+
 **ORG_EMAIL** is your organisation's email.
+
 **APPLICABLE_LAW** is your jurisdiction (usually, your location).
+
 **TAX_OFFICE**, if applicable, if your tax office.
+
 **REGISTRATION_NUMBER** is your registration ID for organisations or companies, if applicable.
+
 **VAT_NUMBER** is your VAT number, if applicable.
+
 **EU_SPECIFIC** should be set to true if the server is located in the EU, false otherwise. It displays extra information about the European Commission online dispute resolution platform on the impressum page.
+
 **SERVERS** contains the organisation providing the servers on which the instance is hosted, if any.

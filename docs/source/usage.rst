@@ -73,7 +73,7 @@ where you should replace lc with a language code of your choice. For now, we are
 5. Set up your .env
 ===================
 
-There is a .env template file at *.env-template* in the root directory of the repository. You should copy it to *.env* and fill in the information for your setup.
+There is a .env template file at *.env-template* in the root directory of the repository. You should copy it to *.env* and fill in the information for your setup. If you need help setting the environment variables, check out our extra instructions :doc:`here <dotenv>`.
 
 
 6. Run your pear!

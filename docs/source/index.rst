@@ -23,4 +23,5 @@ Contents
 .. toctree::
 
    usage
+   dotenv
    tutorials
