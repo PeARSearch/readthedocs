@@ -14,10 +14,8 @@ PeARS can be installed locally from :ref:`source <localinstall>` for development
 Install from source
 -------------------
 
-The following is meant to help you test PeARS on localhost, on your machine. At the point where you are ready to deploy, please check our wiki for more instructions.
 
-
-1. Clone this repo on your machine
+1. Clone the repo on your machine
 ==================================
 
 .. code-block:: bash
@@ -37,7 +35,7 @@ If you haven't yet set up virtualenv on your machine, please install it via pip:
     sudo apt-get install python3-pip
     sudo apt install python3-virtualenv
 
-Then change into the PeARS-orchard directory:
+Then change into the PeARS-federated directory:
 
 .. code-block:: bash
 
@@ -88,7 +86,7 @@ While on your local machine, in the root of the repo, run:
     python3 run.py
 
 
-Now, go to your browser at *localhost:8080*. You should see the search page for PeARS. You don't have any pages indexed yet, so go to the F.A.Q. page (link at the top of the page) and follow the short instructions to get you going!
+Now, go to your browser at *localhost:8080*. You should see the search page for PeARS. You don't have any pages indexed yet, so start indexing to get you going!
 
 
 
@@ -98,7 +96,7 @@ Now, go to your browser at *localhost:8080*. You should see the search page for 
 Install from docker
 -------------------
 
-These instructions assume that you are running your own server.
+These instructions assume that you are running your own server and that you have a domain name available for your PeARS instance.
 
 
 1. Deploy Docker and Docker Compose
@@ -135,8 +133,8 @@ The following instructions are for Ubuntu. For other distributions, refer to the
 
 .. code-block:: bash
 
-    export DOMAIN=pears-pod-url.com # Provide the URL on which you want to reach your pears-federated pod
-    export PEARS_DIR=~/pears-pod-name-1 # replace `pears-pod-name-1` with the name of your pod for ease of identification
+    export DOMAIN=pears-instance-url.com # Provide the URL on which you want to reach your pears-federated instance
+    export PEARS_DIR=~/pears-instance-name-1 # replace `pears-instance-name-1` with the name of your instance for ease of identification
     export STAGE=production # replace this with `staging` if you are just testing the setup, otherwise it will create a TLS certificate for you
 
 Download the Docker-compose file and setup base directory for your instance
@@ -195,22 +193,22 @@ Make sure you create an A name record pointing from your PeARS URL to the public
 
 
 
-3. (Optional) Adding more pods to the same server
-=================================================
+3. (Optional) Adding more instances to the same server
+=======================================================
 
 If you want to host several PeARS instances on the same server, we will have to re-use the same docker-compose file by adding new pod configurations and re-using the `https-portal` container that you will find in the `docker-compose` file to point to different instances for different domain names. Here are the step by step details for doing that:
 
 .. note::
 
-    We assume you have already followed the above steps and have a single pod running already at this point
+    We assume you have already followed the above steps and have a single instance running already at this point.
 
-Create a new directory for the new pod and download the environment variable file
+Create a new directory for the new instance and download the environment variable file
 
 .. code-block:: bash
 
-    export PEARS_DIR_2=~/pears-pod-name-2 # replace pears-pod-name-2 with your new pod name
+    export PEARS_DIR_2=~/pears-instance-name-2 # replace pears-instance-name-2 with your new instance name
     mkdir -p ${PEARS_DIR_2}/data
-    # You can also copy this file from your existing pod directory for ease of editing
+    # You can also copy this file from your existing instance directory for ease of editing
     wget https://raw.githubusercontent.com/PeARSearch/PeARS-federated/nvn/add-deploy-files/deployment/.env-template -O ${PEARS_DIR_2}/.env
     
 Change the environment details in the `.env` file:
@@ -228,15 +226,15 @@ Update the docker-compose to also bring up the second instance. If you open your
     services:
         pears-federated:
             env_file:
-            - pears-pod-name-1/.env
+            - pears-instance-name-1/.env
             image: pearsproject/pears-federated:latest
             volumes:
-            - pears-pod-name-1/data/:/var/lib/pears/data
+            - pears-instance-name-1/data/:/var/lib/pears/data
 
         https-portal:
             image: steveltn/https-portal:1
             environment:
-            DOMAINS: 'pears-pod-url.com -> http://pears-federated:8000'
+            DOMAINS: 'pears-instance-url.com -> http://pears-federated:8000'
             STAGE: production
             ports:
             - "80:80"
@@ -246,7 +244,7 @@ Update the docker-compose to also bring up the second instance. If you open your
             volumes:
             - https-portal-data:/var/lib/https-portal
 
-To add another pod, you will have to first copy the `pears-federated` container definition to a new definition in the file with appropriate names as follows:
+To add another instance, you will have to first copy the `pears-federated` container definition to a new definition in the file with appropriate names as follows:
 
 .. code-block:: bash
 
@@ -255,21 +253,21 @@ To add another pod, you will have to first copy the `pears-federated` container 
     services:
         pears-federated: # if you want you can also rename this to have a more identifiable name
             env_file:
-            - pears-pod-name-1/.env
+            - pears-instance-name-1/.env
             image: pearsproject/pears-federated:latest
             volumes:
-            - pears-pod-name-1/data/:/var/lib/pears/data
+            - pears-instance-name-1/data/:/var/lib/pears/data
 
-        pears-federated-pod-2: # !! CHANGE rename this to have a more identifiable suffix
+        pears-federated-instance-2: # !! CHANGE rename this to have a more identifiable suffix
             env_file:
-            - pears-pod-name-2/.env # !! CHANGE point to your new directory pears-pod-name-2
+            - pears-instance-name-2/.env # !! CHANGE point to your new directory pears-instance-name-2
             image: pearsproject/pears-federated:latest
             volumes:
-            - pears-pod-name-2/data/:/var/lib/pears/data # !! CHANGE point to your new directory pears-pod-name-2
+            - pears-instance-name-2/data/:/var/lib/pears/data # !! CHANGE point to your new directory pears-instance-name-2
         ...
 
 
-Update `https-portal` pod to point to the new pod as well
+Update `https-portal` pod to point to the new instance as well
 
   .. code-block:: bash
 
@@ -278,31 +276,31 @@ Update `https-portal` pod to point to the new pod as well
     services:
         pears-federated:
             env_file:
-            - pears-pod-name-1/.env
+            - pears-instance-name-1/.env
             image: pearsproject/pears-federated:latest
             volumes:
-            - pears-pod-name-1/data/:/var/lib/pears/data
+            - pears-instance-name-1/data/:/var/lib/pears/data
 
-        pears-federated-pod-2:
+        pears-federated-instance-2:
             env_file:
-            - pears-pod-name-2/.env
+            - pears-instance-name-2/.env
             image: pearsproject/pears-federated:latest
             volumes:
-            - pears-pod-name-2/data/:/var/lib/pears/data
+            - pears-instance-name-2/data/:/var/lib/pears/data
 
         https-portal:
             image: steveltn/https-portal:1
             environment:
-                # !! CHANGE: point the URL you want to point to your new pod to the http://<name-of-the-new-pod-in-this-file>:8000
+                # !! CHANGE: point the URL you want to point to your new instance to the http://<name-of-the-new-instance-in-this-file>:8000
                 # You use a comma to separate the entries; this can support any number of mappings
-                DOMAINS: 'pears-pod-url.com -> http://pears-federated:8000, pears-pod-2-url.com -> http://pears-federated-pod-2:8000'
+                DOMAINS: 'pears-instance-url.com -> http://pears-federated:8000, pears-instance-2-url.com -> http://pears-federated-instance-2:8000'
                 STAGE: production
             ports:
             - "80:80"
             - "443:443"
             depends_on:
             - pears-federated
-            - pears-federated-pod-2 # !! CHANGE: notice that it is not depending on the new pod as well
+            - pears-federated-instance-2 # !! CHANGE: notice that it is not depending on the new instance as well
             volumes:
             - https-portal-data:/var/lib/https-portal
     ```
@@ -319,7 +317,7 @@ Start the Docker Compose services:
 
     docker compose up -d
 
-Check the new pod is running by running the command:
+Check the new instance is running by running the command:
   
 .. code-block:: bash
 
@@ -350,7 +348,7 @@ Copy the data directory to the backup directory:
     
 .. code-block:: bash
 
-    cp -r ~/pears-pod-name-1/data ~/pears-federated-backups/data_backup_$(date +%Y%m%d%H%M%S)
+    cp -r ~/pears-instance-name-1/data ~/pears-federated-backups/data_backup_$(date +%Y%m%d%H%M%S)
 
 Regularly schedule this backup process using a cron job or other automation tools to ensure your data is safe. You can setup configurations to upload these directory to a remote cloud storage for maximum security.
 
