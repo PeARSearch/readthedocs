@@ -6,7 +6,7 @@ Installation
 
 *PeARS Federated* is provided as-is. Before you use it, please check the rules of your country on crawling Web content and displaying snippets. And be a good netizen: do not overload people's servers while indexing!
 
-PeARS can be installed locally from :ref:`source <localinstall>_` for development, testing, or even to manage one's own personal search service. For public use (i.e. to share your search service with the world), we recommend the :ref:`docker install <dockerinstall>_`. For those who would like to share their search index but are not fully comfortable with running their own server, we also have bespoke installation instructions for the PythonAnywhere cloud service, which provides an easy-to-user, visual interface to set up one's own Web app.
+PeARS can be installed locally from :ref:`source <localinstall_>` for development, testing, or even to manage one's own personal search service. For public use (i.e. to share your search service with the world), we recommend the :ref:`docker install <dockerinstall_>`. For those who would like to share their search index but are not fully comfortable with running their own server, we also have bespoke installation instructions for the PythonAnywhere cloud service, which provides an easy-to-user, visual interface to set up one's own Web app.
 
 .. _localinstall:
 
@@ -20,7 +20,9 @@ The following is meant to help you test PeARS on localhost, on your machine. At 
 1. Clone this repo on your machine
 ==================================
 
->>> git clone https://github.com/PeARSearch/PeARS-federated.git
+.. code-block:: bash
+    
+    git clone https://github.com/PeARSearch/PeARS-federated.git
 
 
 2. (Optional step) Setup a virtualenv in your directory
@@ -28,18 +30,24 @@ The following is meant to help you test PeARS on localhost, on your machine. At 
 
 If you haven't yet set up virtualenv on your machine, please install it via pip:
 
->>> sudo apt-get update
->>> sudo apt-get install python3-setuptools
->>> sudo apt-get install python3-pip
->>> sudo apt install python3-virtualenv
+.. code-block:: bash
+
+    sudo apt-get update
+    sudo apt-get install python3-setuptools
+    sudo apt-get install python3-pip
+    sudo apt install python3-virtualenv
 
 Then change into the PeARS-orchard directory:
 
->>> cd PeARS-federated
+.. code-block:: bash
+
+    cd PeARS-federated
 
 Then run:
 
->>> virtualenv env && source env/bin/activate
+.. code-block:: bash
+
+    virtualenv env && source env/bin/activate
 
 
 3. Install the build dependencies
@@ -47,7 +55,9 @@ Then run:
 
 From the PeARS-federated directory, run:
 
->>> pip install -r requirements.txt
+.. code-block:: bash
+
+    pip install -r requirements.txt
 
 
 4. (Optional step) Install further languages
@@ -55,7 +65,9 @@ From the PeARS-federated directory, run:
 
 If you want to search and index in several languages at the same time, you can add multilingual support to your English install. To do this:
 
->>> flask pears install-language lc
+.. code-block:: bash
+
+    flask pears install-language lc
 
 where you should replace lc with a language code of your choice. For now, we are only supporting English (en), German (de), French (fr) and Malayalam (ml) but more languages are coming!
 
@@ -71,7 +83,9 @@ There is a .env template file at *.env-template* in the root directory of the re
 
 While on your local machine, in the root of the repo, run:
 
->>> python3 run.py
+.. code-block:: bash
+
+    python3 run.py
 
 
 Now, go to your browser at *localhost:8080*. You should see the search page for PeARS. You don't have any pages indexed yet, so go to the F.A.Q. page (link at the top of the page) and follow the short instructions to get you going!
@@ -190,7 +204,7 @@ If you want to host several PeARS instances on the same server, we will have to 
 
     We assume you have already followed the above steps and have a single pod running already at this point
 
-* Create a new directory for the new pod and download the environment variable file
+Create a new directory for the new pod and download the environment variable file
 
 .. code-block:: bash
 
@@ -199,13 +213,13 @@ If you want to host several PeARS instances on the same server, we will have to 
     # You can also copy this file from your existing pod directory for ease of editing
     wget https://raw.githubusercontent.com/PeARSearch/PeARS-federated/nvn/add-deploy-files/deployment/.env-template -O ${PEARS_DIR_2}/.env
     
-* Change the environment details in the `.env` file:
+Change the environment details in the `.env` file:
 
 .. code-block:: bash
 
     vim ${PEARS_DIR_2}/.env
 
-* Update the docker-compose to also bring up the second instance. If you open your `docker-compose.yaml` file in the server at this point, you will find something like this:
+Update the docker-compose to also bring up the second instance. If you open your `docker-compose.yaml` file in the server at this point, you will find something like this:
 
 .. code-block:: bash
    
@@ -232,7 +246,7 @@ If you want to host several PeARS instances on the same server, we will have to 
             volumes:
             - https-portal-data:/var/lib/https-portal
 
-* To add another pod, you will have to first copy the `pears-federated` container definition to a new definition in the file with appropriate names as follows:
+To add another pod, you will have to first copy the `pears-federated` container definition to a new definition in the file with appropriate names as follows:
 
 .. code-block:: bash
 
@@ -255,7 +269,7 @@ If you want to host several PeARS instances on the same server, we will have to 
         ...
 
 
-* Update `https-portal` pod to point to the new pod as well
+Update `https-portal` pod to point to the new pod as well
 
   .. code-block:: bash
 
@@ -293,25 +307,25 @@ If you want to host several PeARS instances on the same server, we will have to 
             - https-portal-data:/var/lib/https-portal
     ```
 
-* Bring Up the Docker Compose
+Bring Up the Docker Compose
 
-.. note:: Note.
-    
-This command assumes that you are running this command from the directory in which the `docker-compose.yaml` file exists
+.. note:: 
 
-* Start the Docker Compose services:
+    This command assumes that you are running this command from the directory in which the `docker-compose.yaml` file exists
+
+Start the Docker Compose services:
 
 .. code-block:: bash
 
     docker compose up -d
 
- * Check the new pod is running by running the command:
+Check the new pod is running by running the command:
   
 .. code-block:: bash
 
     docker ps
 
-* Point your DNS to the IP address of the server
+Point your DNS to the IP address of the server
 
 Make sure you create an A name record pointing from your new PeARS URL to the public IP address of the server
 
@@ -326,13 +340,13 @@ Backing Up data
 
 To avoid loss of data, regularly back up the `data` folder:
 
-* Create a backup directory:
+Create a backup directory:
     
 .. code-block:: bash
 
     mkdir -p ~/pears-federated-backups
 
-* Copy the data directory to the backup directory:
+Copy the data directory to the backup directory:
     
 .. code-block:: bash
 
