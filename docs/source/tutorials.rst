@@ -12,10 +12,7 @@ We will assume a  local PeARS install for this tutorial. Refer to the documentat
 Step 1 - create a Wikipedia corpus
 ----------------------------------
 
-Install WikiNLP
-===============
-
-The installation instructions for WikiNLP can be found `on GitHub <https://github.com/possible-worlds-research/wikinlp>`_. We replicate them here below for convenience.
+We will first install WikiNLP. The installation instructions can be found `on GitHub <https://github.com/possible-worlds-research/wikinlp>`_. We replicate them here below for convenience.
 
 We recommend installing this package in a virtual environment. If you do not have virtualenv installed, you can get it in the following way:
 
@@ -38,10 +35,7 @@ Then, create a directory for WikiNLP, make your virtual environment and install 
 You're done!
 
 
-Download the Wikipedia categories
-=================================
-
-Let's now assume that you are a book lover with an affinity for science fiction. Further, let's imagine that you would like to search for novels with particular plot elements, irrespective of author, publication history or book reception. In other words, you would like to extract the synopses only from the original pages, and search over those.
+Next, we want to download some Wikipedia categories. Let's now assume that you are a book lover with an affinity for science fiction. Further, let's imagine that you would like to search for novels with particular plot elements, irrespective of author, publication history or book reception. In other words, you would like to extract the synopses only from the original pages, and search over those.
 
 So let's make ourselves an appropriate corpus from the English Wikipedia. From our new *wikinlp* folder, we will first download Wikipedia categories. To reduce download time, we will stick to categories with at least 10 pages and at most 1000.
 

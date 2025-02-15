@@ -333,8 +333,6 @@ If you want to add a third instance, you can follow the same steps as above but 
 4. Management
 =============
 
-Backing Up data
----------------
 
 To avoid loss of data, regularly back up the `data` folder:
 
