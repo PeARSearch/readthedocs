@@ -7,11 +7,11 @@ Welcome to the PeARS documentation!
 
 If you are excited about the idea of a decentralised search engine, there are different ways you can contribute! Find out what you can do as:
 
-* a searcher
-* a curator
-* an instance admin
+* a :ref:`searcher <searcher>`
+* a :ref:`curator <curator>`
+* an instance :ref:`admin <admin>`
 
-If you want to run your own PeARS, check out the :doc:`usage` section for further information on setting up the software.
+If you want to run your own PeARS, either locally or as a public instance, check out the :doc:`usage` section for further information on setting up the software.
 
 .. note::
 
@@ -22,6 +22,7 @@ Contents
 
 .. toctree::
 
+   users
    usage
    dotenv
    tutorials
