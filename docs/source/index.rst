@@ -26,4 +26,4 @@ Contents
    usage
    dotenv
    languages
-   tutorials
+   wikiindexing

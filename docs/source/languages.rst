@@ -1,6 +1,6 @@
-========================================
-Training a PeARS model for your language
-========================================
+=====================================================
+Tutorial 2: Training a PeARS model for your language
+=====================================================
 
 At the time of writing (Feb. 2025), PeARS supports four languages: English, German, French and Malayalam. If you want to train a model for your own language, all you need is to ensure there is a Wikipedia snapshot for that language, and run a few commands from the `pearsnlp repository <https://github.com/possible-worlds-research/pearsnlp>`_, maintained by our friends at `Possible Worlds Research <https://github.com/possible-worlds-research>`_.
 
