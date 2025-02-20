@@ -25,5 +25,5 @@ Contents
    users
    usage
    dotenv
-   languages
    wikiindexing
+   languages
