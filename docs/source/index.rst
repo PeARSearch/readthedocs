@@ -25,4 +25,5 @@ Contents
    users
    usage
    dotenv
+   languages
    tutorials

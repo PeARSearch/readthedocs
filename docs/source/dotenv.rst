@@ -4,6 +4,9 @@ The PeARS .env
 
 If you are a PeARS admin setting up an instance, you will have to go through the important step of configuring the .env file of PeARS to fit your purposes. This page explains the different environment variables available in PeARS, and what you should do with them.
 
+
+.. _language-settings:
+
 -----------------
 Language settings
 -----------------
