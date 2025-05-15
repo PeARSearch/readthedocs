@@ -183,8 +183,8 @@ If you now go back to your PeARS interface, you should find your new site when r
 Credits
 -------
 
-.. image:: /_static/NGI.png
-   :target: https://pearsproject.org/images/NGI.png
+.. image:: /static/NGI.png
+   :width: 400px
    :alt: NGI Logo
 
 Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or European Commission. Neither the European Union nor the granting authority can be held responsible for them. Funded within the framework of the NGI Search project under grant agreement No101069364.
