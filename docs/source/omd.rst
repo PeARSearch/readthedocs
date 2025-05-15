@@ -18,6 +18,11 @@ We will assume that you have an On My Disk client installed on your machine and 
 
 You will have to set up the On My Disk client for use with PeARS, by navigating to your settings and to the device tab. Please tick 'Use local PeARS server' and enter a string of your choice as authentification token.
 
+.. image:: /static/set-pears-token.png
+   :width: 800px
+   :alt: Setting the PeARS token in the On My Disk client.
+
+
 
 1. Clone the repo on your machine
 ==================================
@@ -115,7 +120,10 @@ Your PeARS is set up to index your private files, as well as the public websites
 
 The first thing you will want to do on your private indexer page is retrieve your account information from the On My Disk gateway. To do this, simply click on 'Update your database'. It will populate the page with your personal information.
 
-![Private indexing page on the PeARS client, showing the 'update your database' button.](https://github.com/user-attachments/assets/2a1df1bb-f967-482c-81d4-cca44329fa27)
+.. image:: /static/omd-private-indexing.png
+   :width: 800px
+   :alt: Private indexing page on the PeARS client, showing the 'update your database' button.
+
 
 Under 'Subscriptions: locations', you will find the physical devices you have registered on the OnMyDisk network, as well as any folder shared with you by other users. By default, each location is unticked, meaning that PeARS will not index it. If you want to index a specific location, you can do so by ticking the relevant checkbox and pressing the button 'Update subscriptions'.
 
@@ -128,17 +136,26 @@ Whenever you make a change to your subscriptions, PeARS will update your current
 
 On My Disk is not just a private cloud service, but also a private website hosting service. People hosting their website on the On My Disk network can have their public content directly searchable from local PeARS nodes. In order to know which websites are available on the network, head over to the Websites tab and click on 'Browse OMD websites':
 
-![Website tab of the PeARS client, showing the 'Browse OMD websites' button.](https://github.com/user-attachments/assets/e0f08934-77b7-4e23-b38c-33d8b08c9f35)
+.. image:: /static/browse-omd-websites.png
+   :width: 800px
+   :alt: Website tab of the PeARS client, showing the 'Browse OMD websites' button.
+
 
 You will be presented with the current list of all sites on the network:
 
-![On My Disk website list](https://github.com/user-attachments/assets/0f29f831-b49f-4fea-9c5d-d1e10a892dac)
+.. image:: /static/omd-website-list.png
+   :width: 800px
+   :alt: On My Disk website list
+
 
 To make a site searchable on your local PeARS client, simply click on the little cloud icon. This will add the site to your subscribed content.
 
 The list of sites you are subscribed to is visible from the 'Websites' tab. Whenever you want to unsubscribe from a site, you can untick the relevant checkbox and click on 'Update subscriptions.
 
-![Website tab of the PeARS client, showing the list of currently subscribed websites.](https://github.com/user-attachments/assets/f97eb673-23f1-4cc4-b2b9-8d823cddfed6)
+.. image:: /static/omd-subscribed-websites-list.png
+   :width: 800px
+   :alt: Website tab of the PeARS client, showing the list of currently subscribed websites.
+
 
 As for private indexing, clicking on 'Perform manual indexing' will trigger indexing for all your locations, including subscribed websites. Otherwise, website indexing will happen automatically once a day, as long as your PeARS client is online.
 
@@ -148,7 +165,10 @@ As for private indexing, clicking on 'Perform manual indexing' will trigger inde
 
 Once indexing is complete, you can search. Results will look like this, and include both websites and private files:
 
-![Screenshot of the search results page](https://github.com/user-attachments/assets/a35612d0-a8a4-40c5-ba37-05d4a3419b85)
+.. image:: /static/omd-search-results.png
+   :width: 800px
+   :alt: Screenshot of the search results page
+
 
 The system will search both your files' metadata as well as their full text, if applicable: the contents from plain text files will be indexed directly; the contents of certain supported file types (`pdf`, `odt`, `docx`, `xlsx`, and `pptx`) will be automatically converted and made searchable.
 
@@ -169,11 +189,16 @@ Creating your own website and making it searchable
 
 We will first go to our On My Disk client and click on 'New website':
 
-![Screenshot of On My Disk client, showing the 'New website' link](https://github.com/user-attachments/assets/2a3d7b46-6c83-4ece-8d9f-a96d8c8a0879)
+.. image:: /static/new-website-link.png
+   :width: 400px
+   :alt: Screenshot of On My Disk client, showing the 'New website' link
+
 
 Follow the instructions to create your website, entering a name, title and description. (As 'type' can use a Jekyll site for your first attempt.)
 
-![Screenshot of the dialogue box to create a new On My Disk website](https://github.com/user-attachments/assets/b4d65e0e-3603-4156-a1a1-d260fd5f1e24)
+.. image:: /static/new-omd-website.png
+   :width: 400px
+   :alt: Screenshot of the dialogue box to create a new On My Disk website
 
 Click on 'Next', select a theme, and click on 'Create'. Template files will be automatically created in your On My Disk account for your new site. You can visit your template site by clicking on the world icon in the top right hand corner of the screen.
 
@@ -188,9 +213,4 @@ Credits
    :alt: NGI Logo
 
 Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or European Commission. Neither the European Union nor the granting authority can be held responsible for them. Funded within the framework of the NGI Search project under grant agreement No101069364.
-                                                                                                                                                                                         169,1         Bot
-
-
-
-
 
