@@ -27,3 +27,4 @@ Contents
    dotenv
    wikiindexing
    languages
+   omd
